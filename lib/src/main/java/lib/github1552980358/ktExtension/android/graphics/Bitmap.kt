@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package lib.github1552980358.ktExtension.android.graphics
 
 import android.content.Context
@@ -10,7 +12,6 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 
 /** Output into file **/
-
 fun Bitmap.writePNGToFile(file: File, quality: Int = 100) {
     file.outputStream().osApply {
         compress(Bitmap.CompressFormat.PNG, quality, this)
@@ -30,9 +31,15 @@ fun Bitmap.writeWEBPToFile(file: File, quality: Int = 100) {
 }
 
 /** Bitmap into drawable **/
-fun Bitmap.toDrawable(context: Context) = this.toDrawable(context.resources)
+fun Bitmap?.toDrawable(context: Context): BitmapDrawable? {
+    this ?: return null
+    return toDrawable(context.resources)
+}
 
-fun Bitmap.toDrawable(resources: Resources) = BitmapDrawable(resources, this)
+fun Bitmap?.toDrawable(resources: Resources): BitmapDrawable? {
+    this ?: return null
+    return BitmapDrawable(resources, this)
+}
 
 /**
  * get [ByteArray] from [Bitmap]
