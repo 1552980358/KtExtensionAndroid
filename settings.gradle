@@ -1,0 +1,3 @@
+rootProject.name='KtExtensionAndroid'
+include ':app'
+include ':lib'
