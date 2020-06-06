@@ -34,9 +34,15 @@ fun File.writeDrawable(drawable: Drawable, compressFormat: Bitmap.CompressFormat
 
 /**
  * Read file and return as [Bitmap]
+ *
+ * null will be returned if exception is thrown during conversion or
+ * empty file
  **/
 fun File.readAsBitmap(): Bitmap? {
     var bitmap: Bitmap? = null
+    if (length() == 0L) {
+        return null
+    }
     inputStream().use { `is` ->
         tryCatch { bitmap = BitmapFactory.decodeStream(`is`) }
     }
@@ -45,9 +51,15 @@ fun File.readAsBitmap(): Bitmap? {
 
 /**
  * Read file and return as [Drawable]
+ *
+ * null will be returned if exception is thrown during conversion or
+ * empty file
  **/
 fun File.readAsDrawable(srcName: String = "DRAWABLE"): Drawable? {
    var drawable: Drawable? = null
+    if (length() == 0L) {
+        return null
+    }
     inputStream().use { `is` ->
         tryCatch { drawable = Drawable.createFromStream(`is`, srcName) }
     }
