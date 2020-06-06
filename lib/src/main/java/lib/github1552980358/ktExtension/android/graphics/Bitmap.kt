@@ -107,11 +107,19 @@ fun Bitmap.cutSquare(centerX: Int, centerY: Int, sideLength: Int): Bitmap? {
 /**
  * Cut image into circular
  **/
-fun Bitmap.cutCircle() = this.apply { cutCircleInternal(this, Canvas(this), Paint().apply { isAntiAlias = true }) }
+fun Bitmap.cutCircle() = this.apply {
+    cutCircleInternal(
+        this,
+        Canvas(Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)),
+        Paint().apply { isAntiAlias = true })
+}
 
 fun Bitmap.copyAndCutCircle(): Bitmap? {
     return (cutSquare() ?: return null).apply {
-        cutCircleInternal(this, Canvas(this), Paint().apply { isAntiAlias = true })
+        cutCircleInternal(
+            this,
+            Canvas(Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)),
+            Paint().apply { isAntiAlias = true })
     }
 }
 
@@ -136,8 +144,11 @@ fun Bitmap.copyAndCutCircle(centerX: Int, centerY: Int, radius: Int): Bitmap? {
     
     // Cut into square
     return cutSquare(centerX, centerY, radius * 2).apply {
-        this?:return null
-        cutCircleInternal(this, Canvas( this), Paint().apply { isAntiAlias = true })
+        this ?: return null
+        cutCircleInternal(
+            this,
+            Canvas(Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)),
+            Paint().apply { isAntiAlias = true })
     }
 }
 
