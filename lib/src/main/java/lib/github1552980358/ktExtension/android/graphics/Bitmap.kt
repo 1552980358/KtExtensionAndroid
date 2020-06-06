@@ -149,7 +149,7 @@ private fun cutCircleInternal(bitmap: Bitmap, canvas: Canvas, paint: Paint) {
     canvas.drawCircle(
         bitmap.width / 2F,
         bitmap.height / 2F,
-        bitmap.width.toFloat(),
+        bitmap.width / 2F,
         paint
     )
     paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
