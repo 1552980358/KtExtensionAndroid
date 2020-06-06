@@ -7,7 +7,7 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
-import lib.github1552980358.ktExtension.android.graphics.toDrawable
+import androidx.core.graphics.drawable.toDrawable
 
 /**
  * Convert [ByteArray] into [Bitmap] using [BitmapFactory]
@@ -36,7 +36,7 @@ fun ByteArray.toDrawable(context: Context): BitmapDrawable? {
         return null
     }
     
-    return toBitmap().toDrawable(context.resources)
+    return toBitmap()?.toDrawable(context.resources)
 }
 
 fun ByteArray.toDrawable(resources: Resources): BitmapDrawable? {

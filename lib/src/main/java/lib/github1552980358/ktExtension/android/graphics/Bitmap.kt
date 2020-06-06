@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import androidx.core.graphics.drawable.toDrawable
 import lib.github1552980358.ktExtension.jvm.javaKeyword.tryCatch
 import lib.github1552980358.ktExtension.jvm.stream.osApply
 import java.io.ByteArrayOutputStream
@@ -36,6 +37,11 @@ fun Bitmap?.toDrawable(context: Context): BitmapDrawable? {
     return toDrawable(context.resources)
 }
 
+@Deprecated(
+    "Use [Bitmap.toBitmap(Resources)] provided by androidx",
+    ReplaceWith("Bitmap.toBitmap(Resources)", "androidx.core.graphics.drawable.Bitmap.toDrawable"),
+    DeprecationLevel.ERROR
+)
 fun Bitmap?.toDrawable(resources: Resources): BitmapDrawable? {
     this ?: return null
     return BitmapDrawable(resources, this)
