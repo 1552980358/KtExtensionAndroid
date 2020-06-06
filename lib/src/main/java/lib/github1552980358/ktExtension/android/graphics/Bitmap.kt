@@ -107,13 +107,15 @@ fun Bitmap.cutSquare(centerX: Int, centerY: Int, sideLength: Int): Bitmap? {
 /**
  * Cut image into circular
  **/
-fun Bitmap.cutCircle(): Bitmap? {
+fun Bitmap.cutCircle() = this.apply { cutCircleInternal(this, Canvas(this), Paint().apply { isAntiAlias = true }) }
+
+fun Bitmap.copyAndCutCircle(): Bitmap? {
     return (cutSquare() ?: return null).apply {
         cutCircleInternal(this, Canvas(this), Paint().apply { isAntiAlias = true })
     }
 }
 
-fun Bitmap.cutCircle(centerX: Int, centerY: Int, radius: Int): Bitmap? {
+fun Bitmap.copyAndCutCircle(centerX: Int, centerY: Int, radius: Int): Bitmap? {
     // At the edge
     if (centerX == 0 || centerX == width || centerY == 0 || centerY == height) {
         return null
