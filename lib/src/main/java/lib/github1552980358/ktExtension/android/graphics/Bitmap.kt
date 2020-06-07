@@ -105,27 +105,23 @@ fun Bitmap.cutSquare(centerX: Int, centerY: Int, sideLength: Int): Bitmap? {
 }
 
 /**
- * Cut image into circular
+ * Cut image into circle
  **/
-fun Bitmap.cutCircle() = this.apply {
-    cutCircleInternal(
-        this,
-        Canvas(Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)),
-        Paint().apply { isAntiAlias = true })
-}
-
-fun Bitmap.copyAndCutCircle(): Bitmap? {
-    return (cutSquare() ?: return null).apply {
-        cutCircleInternal(
-            this,
-            Canvas(Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)),
-            Paint().apply { isAntiAlias = true })
+fun Bitmap.cutCircle(): Bitmap? {
+    return Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888).also { canvasBitmap ->
+        Canvas(canvasBitmap).also { canvas ->
+            Paint().apply { isAntiAlias = true }.also { paint ->
+                canvas.drawCircle(width / 2F, height / 2F, width / 2F, paint)
+                paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+                canvas.drawBitmap(this, 0F, 0F, paint)
+            }
+        }
     }
 }
 
-fun Bitmap.copyAndCutCircle(centerX: Int, centerY: Int, radius: Int): Bitmap? {
+fun Bitmap.cutCircle(centerX: Float, centerY: Float, radius: Float): Bitmap? {
     // At the edge
-    if (centerX == 0 || centerX == width || centerY == 0 || centerY == height) {
+    if (centerX == 0F || centerX == width.toFloat() || centerY == 0F || centerY == height.toFloat()) {
         return null
     }
     
@@ -143,31 +139,13 @@ fun Bitmap.copyAndCutCircle(centerX: Int, centerY: Int, radius: Int): Bitmap? {
     }
     
     // Cut into square
-    return cutSquare(centerX, centerY, radius * 2).apply {
-        this ?: return null
-        cutCircleInternal(
-            this,
-            Canvas(Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)),
-            Paint().apply { isAntiAlias = true })
+    return Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888).also { canvasBitmap ->
+        Canvas(canvasBitmap).also { canvas ->
+            Paint().apply { isAntiAlias = true }.also { paint ->
+                canvas.drawCircle(centerX, centerY, radius, paint)
+                paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+                canvas.drawBitmap(this, 0F, 0F, paint)
+            }
+        }
     }
-}
-
-/**
- * For internal use
- * @HIDE
- **/
-private fun cutCircleInternal(bitmap: Bitmap, canvas: Canvas, paint: Paint) {
-    canvas.drawCircle(
-        bitmap.width / 2F,
-        bitmap.height / 2F,
-        bitmap.width / 2F,
-        paint
-    )
-    paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
-    canvas.drawBitmap(
-        bitmap,
-        0F,
-        0F,
-        paint
-    )
 }
