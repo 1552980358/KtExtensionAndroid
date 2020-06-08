@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package lib.github1552980358.ktExtension.android.java
+package lib.github1552980358.ktExtension.android.kotlin
 
 import java.lang.IllegalArgumentException
 import java.util.Collections

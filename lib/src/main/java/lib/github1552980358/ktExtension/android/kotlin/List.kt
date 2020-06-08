@@ -1,4 +1,4 @@
-package lib.github1552980358.ktExtension.android.java
+package lib.github1552980358.ktExtension.android.kotlin
 
 /**
  * Copy List
