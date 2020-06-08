@@ -10,7 +10,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.core.graphics.createBitmap
 import androidx.palette.graphics.Palette
-import lib.github1552980358.ktExtension.android.graphics.toDrawable
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -27,7 +26,7 @@ class ColorPalette {
 }
 
 /**
- * public methods
+ * Public methods
  **/
 fun ColorPalette.getCalculate(drawable: Drawable) {
     val area = drawable.intrinsicWidth * drawable.intrinsicHeight
@@ -100,8 +99,6 @@ fun ColorPalette.getCalculate(drawable: Drawable) {
     }
 }
 fun ColorPalette.getCalculate(context: Context, bitmap: Bitmap) = getCalculate(BitmapDrawable(context.resources, bitmap))
-fun Bitmap.getColorPalette(context: Context) = this.toDrawable(context)?.getColorPalette()
-fun Drawable.getColorPalette() = ColorPalette().getCalculate(this)
 
 /**
  * Following contents are the fork of Media-Style-Palette

@@ -11,6 +11,7 @@ import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.graphics.drawable.BitmapDrawable
 import androidx.core.graphics.drawable.toDrawable
+import lib.github1552980358.ktExtension.android.extension.ColorPalette
 import lib.github1552980358.ktExtension.jvm.javaKeyword.tryCatch
 import lib.github1552980358.ktExtension.jvm.stream.osApply
 import java.io.ByteArrayOutputStream
@@ -149,3 +150,8 @@ fun Bitmap.cutCircle(centerX: Float, centerY: Float, radius: Float): Bitmap? {
         }
     }
 }
+
+/**
+ * Get [ColorPalette] for media UI
+ **/
+fun Bitmap.getColorPalette(context: Context) = this.toDrawable(context)?.getColorPalette()

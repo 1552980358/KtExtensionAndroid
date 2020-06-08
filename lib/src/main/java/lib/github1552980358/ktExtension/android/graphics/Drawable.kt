@@ -5,6 +5,8 @@ package lib.github1552980358.ktExtension.android.graphics
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import androidx.core.graphics.drawable.toBitmap
+import lib.github1552980358.ktExtension.android.extension.ColorPalette
+import lib.github1552980358.ktExtension.android.extension.getCalculate
 import lib.github1552980358.ktExtension.jvm.javaKeyword.tryCatch
 
 /**
@@ -27,3 +29,8 @@ fun Drawable.toByteArray(
     tryCatch { return toBitmap().getByteArray(format, quality) }
     return null
 }
+
+/**
+ * Get [ColorPalette] for media UI
+ **/
+fun Drawable.getColorPalette() = ColorPalette().getCalculate(this)
