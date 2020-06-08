@@ -26,6 +26,8 @@ Should implement dependencies into your module `build.gradle` when the specific 
             - Dependency `androidx.core:core-ktx:1.3.0`
         - `Drawable`
             - Dependency `androidx.core:core-ktx:1.3.0`
+    - android.util
+        - `Log`
     - androidx.palette
         - `Palette`
             - Dependency `androidx.palette:palette-ktx:1.0.0`
