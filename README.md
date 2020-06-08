@@ -8,6 +8,8 @@ An extension library of Kotlin especially designed for Android platform
     - android.graphics
         - `Bitmap`
         - `Drawable`
+    - androidx.palette
+        - `Palette`
 - Kotlin
     - `Array`
     - `ByteArray`
