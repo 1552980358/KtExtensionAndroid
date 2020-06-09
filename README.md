@@ -39,6 +39,7 @@ Should implement dependencies into your module `build.gradle` when the specific 
     - `ArrayList`
     - `File`
     - `InputStream`
+    - `Runtime`
 4. More Extension is on the way...
 
 ### Open Source License - [Apache License 2.0](https://github.com/1552980358/KtExtensionAndroid/blob/master/LICENSE)
