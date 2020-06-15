@@ -7,7 +7,7 @@ import lib.github1552980358.ktExtension.android.graphics.toBitmap
 import lib.github1552980358.ktExtension.android.graphics.writeJPEGToFile
 import lib.github1552980358.ktExtension.android.graphics.writePNGToFile
 import lib.github1552980358.ktExtension.android.graphics.writeWEBPToFile
-import lib.github1552980358.ktExtension.jvm.javaKeyword.tryCatch
+import lib.github1552980358.ktExtension.jvm.keyword.tryCatch
 import java.io.File
 
 /**

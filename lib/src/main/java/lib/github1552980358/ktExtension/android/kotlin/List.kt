@@ -5,8 +5,6 @@ package lib.github1552980358.ktExtension.android.kotlin
  **/
 fun <T> List<T>.copy() = listOf(this).toMutableList()
 
-
-
 /**
  * Copy a new [MutableList] and [shuffle] content elements
  **/

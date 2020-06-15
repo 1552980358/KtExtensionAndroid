@@ -2,7 +2,6 @@ package lib.github1552980358.ktExtension.android.util
 
 import android.util.Log
 
-
 /**
  * Quick call of log output
  **/

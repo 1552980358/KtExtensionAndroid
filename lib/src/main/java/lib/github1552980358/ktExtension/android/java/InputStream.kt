@@ -3,7 +3,7 @@ package lib.github1552980358.ktExtension.android.java
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
-import lib.github1552980358.ktExtension.jvm.javaKeyword.tryCatch
+import lib.github1552980358.ktExtension.jvm.keyword.tryCatch
 import java.io.InputStream
 
 /**

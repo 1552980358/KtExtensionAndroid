@@ -12,8 +12,8 @@ import android.graphics.PorterDuffXfermode
 import android.graphics.drawable.BitmapDrawable
 import androidx.core.graphics.drawable.toDrawable
 import lib.github1552980358.ktExtension.android.extension.ColorPalette
-import lib.github1552980358.ktExtension.jvm.javaKeyword.tryCatch
-import lib.github1552980358.ktExtension.jvm.stream.osApply
+import lib.github1552980358.ktExtension.jvm.keyword.tryCatch
+import lib.github1552980358.ktExtension.jvm.io.osApply
 import java.io.ByteArrayOutputStream
 import java.io.File
 import kotlin.math.abs
