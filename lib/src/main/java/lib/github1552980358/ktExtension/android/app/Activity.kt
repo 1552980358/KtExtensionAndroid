@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package lib.github1552980358.ktExtension.android.app
 
 import android.app.Activity

@@ -33,7 +33,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compileOnly 'androidx.core:core-ktx:1.3.0'
-    compileOnly 'com.github.1552980358:KtExtension:b1204d0a34'
+    compileOnly 'com.github.1552980358:KtExtension:c2843e97db'
     compileOnly 'androidx.palette:palette-ktx:1.0.0'
 
     testImplementation 'junit:junit:4.12'

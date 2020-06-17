@@ -1,3 +1,5 @@
+@file:Suppress("HasPlatformType")
+
 package lib.github1552980358.ktExtension.android.java
 
 import java.io.File

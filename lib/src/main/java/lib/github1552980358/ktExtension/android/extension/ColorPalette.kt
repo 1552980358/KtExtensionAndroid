@@ -10,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.core.graphics.createBitmap
 import androidx.palette.graphics.Palette
+import java.io.Serializable
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -17,7 +18,7 @@ import kotlin.math.pow
 import kotlin.math.round
 import kotlin.math.roundToInt
 
-class ColorPalette {
+class ColorPalette: Serializable {
     var primaryColor = 0
     var secondaryColor = 0
     var backgroundColor = 0
