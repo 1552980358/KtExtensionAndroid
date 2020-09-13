@@ -1,9 +1,11 @@
 package lib.github1552980358.ktExtension.android.view
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 
@@ -20,6 +22,11 @@ fun View.getDimension(@DimenRes resId: Int) = context.resources.getDimension(res
 fun View.getDimensionPixelOffset(@DimenRes resId: Int) = context.resources.getDimensionPixelOffset(resId)
 
 fun View.getDimensionPixelSize(@DimenRes resId: Int) = context.resources.getDimensionPixelSize(resId)
+
+/**
+ * Get [Drawable] with [resId] without calling [Context.getDrawable]
+ **/
+fun View.getDrawable(@DrawableRes resId: Int) = context.getDrawable(resId)
 
 /**
  * Get [String] with [resId] without calling [Context.getString]
