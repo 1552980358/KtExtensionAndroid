@@ -1,7 +1,10 @@
+@file:Suppress("HasPlatformType", "unused")
+
 package lib.github1552980358.ktExtension.android.view
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.util.DisplayMetrics
 import android.view.View
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
@@ -22,6 +25,11 @@ fun View.getDimension(@DimenRes resId: Int) = context.resources.getDimension(res
 fun View.getDimensionPixelOffset(@DimenRes resId: Int) = context.resources.getDimensionPixelOffset(resId)
 
 fun View.getDimensionPixelSize(@DimenRes resId: Int) = context.resources.getDimensionPixelSize(resId)
+
+/**
+ * Return [DisplayMetrics] object without calling [Context.getResources]
+ **/
+fun View.getDisplayMetrics() = context.resources.displayMetrics
 
 /**
  * Get [Drawable] with [resId] without calling [Context.getDrawable]
