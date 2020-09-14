@@ -1,6 +1,8 @@
 package lib.github1552980358.ktExtension.android.content
 
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.IntentFilter
 import android.widget.Toast
 import lib.github1552980358.ktExtension.android.content.res.getStatusBarHeight
 
@@ -30,3 +32,16 @@ fun Context.longToast(message: CharSequence) =
 
 fun Context.longToast(message: Int) =
     lib.github1552980358.ktExtension.android.widget.longToast(this, message)
+
+/**
+ * Register [BroadcastReceiver] without creating [IntentFilter] by hand
+ **/
+fun Context.registerReceiver(broadcastReceiver: BroadcastReceiver, vararg actions: String) =
+    registerReceiver(
+        broadcastReceiver,
+        IntentFilter().apply {
+            actions.forEach { action ->
+                addAction(action)
+            }
+        }
+    )
