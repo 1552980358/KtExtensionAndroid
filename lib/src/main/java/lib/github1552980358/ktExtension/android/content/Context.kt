@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package lib.github1552980358.ktExtension.android.content
 
 import android.content.BroadcastReceiver
@@ -36,7 +38,7 @@ fun Context.longToast(message: Int) =
 /**
  * Register [BroadcastReceiver] without creating [IntentFilter] by hand
  **/
-fun Context.registerReceiver(broadcastReceiver: BroadcastReceiver, vararg actions: String) =
+fun Context.registerBroadcastReceiver(broadcastReceiver: BroadcastReceiver, actions: Array<out String>) =
     registerReceiver(
         broadcastReceiver,
         IntentFilter().apply {
