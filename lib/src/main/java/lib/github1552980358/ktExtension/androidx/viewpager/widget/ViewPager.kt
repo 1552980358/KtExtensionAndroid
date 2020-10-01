@@ -1,4 +1,4 @@
-package lib.github1552980358.ktExtension.androidx
+package lib.github1552980358.ktExtension.androidx.viewpager.widget
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
 import androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_SET_USER_VISIBLE_HINT
 import androidx.viewpager.widget.ViewPager
+import lib.github1552980358.ktExtension.androidx.fragment.app.SimpleFragmentPagerAdapter
 import java.util.ArrayList
 
 /**

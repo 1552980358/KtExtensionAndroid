@@ -1,4 +1,6 @@
-package lib.github1552980358.ktExtension.androidx
+@file:Suppress("UnusedImport")
+
+package lib.github1552980358.ktExtension.androidx.fragment.app
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
