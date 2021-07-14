@@ -12,8 +12,8 @@ import android.graphics.PorterDuffXfermode
 import android.graphics.drawable.BitmapDrawable
 import androidx.core.graphics.drawable.toDrawable
 import lib.github1552980358.ktExtension.android.extension.ColorPalette
-import lib.github1552980358.ktExtension.jvm.keyword.tryCatch
 import lib.github1552980358.ktExtension.jvm.io.osApply
+import lib.github1552980358.ktExtension.jvm.keyword.tryCatch
 import java.io.ByteArrayOutputStream
 import java.io.File
 import kotlin.math.abs
@@ -155,3 +155,13 @@ fun Bitmap.cutCircle(centerX: Float, centerY: Float, radius: Float): Bitmap? {
  * Get [ColorPalette] for media UI
  **/
 fun Bitmap.getColorPalette(context: Context) = this.toDrawable(context)?.getColorPalette()
+
+/**
+ * [Bitmap.getWidth] into [Float] type
+ **/
+val Bitmap.widthF get() = width.toFloat()
+
+/**
+ * [Bitmap.getHeight] into [Float] type
+ **/
+val Bitmap.heightF get() = height.toFloat()
