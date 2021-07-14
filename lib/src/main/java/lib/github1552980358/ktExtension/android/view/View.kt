@@ -47,3 +47,13 @@ fun View.getString(@StringRes resId: Int, vararg formatArgs: Any) = context.getS
  * Get [CharSequence] with [resId] without calling [Context.getText]
  **/
 fun View.getText(@StringRes resId: Int) = context.getText(resId)
+
+/**
+ * Get [View]'s [View.getWidth] and convert into [Float]
+ **/
+val View.widthF get() = width.toFloat()
+
+/**
+ * Get [View]'s [View.getHeight] and convert into [Float]
+ **/
+val View.heightF get() = height.toFloat()
