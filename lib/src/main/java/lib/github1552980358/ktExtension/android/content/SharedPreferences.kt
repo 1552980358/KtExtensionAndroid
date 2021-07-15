@@ -5,6 +5,38 @@ package lib.github1552980358.ktExtension.android.content
 import android.content.SharedPreferences
 
 /**
+ * Put [name] [value] into [SharedPreferences.Editor] and [SharedPreferences.Editor.commit]
+ * @return [Int]
+ **/
+fun SharedPreferences.commit(name: String, value: String?) = edit().putString(name, value).commit()
+
+fun SharedPreferences.commit(name: String, value: Boolean) = edit().putBoolean(name, value).commit()
+
+fun SharedPreferences.commit(name: String, value: Float) = edit().putFloat(name, value).commit()
+
+fun SharedPreferences.commit(name: String, value: Int) = edit().putInt(name, value).commit()
+
+fun SharedPreferences.commit(name: String, value: Long) = edit().putLong(name, value).commit()
+
+fun SharedPreferences.commit(name: String, value: Set<String?>?) = edit().putStringSet(name, value).commit()
+
+/**
+ * Put [name] [value] into [SharedPreferences.Editor] and [SharedPreferences.Editor.apply]
+ * @return [Void]
+ **/
+fun SharedPreferences.apply(name: String, value: String?) = edit().putString(name, value).apply()
+
+fun SharedPreferences.apply(name: String, value: Boolean) = edit().putBoolean(name, value).apply()
+
+fun SharedPreferences.apply(name: String, value: Float) = edit().putFloat(name, value).apply()
+
+fun SharedPreferences.apply(name: String, value: Int) = edit().putInt(name, value).apply()
+
+fun SharedPreferences.apply(name: String, value: Long) = edit().putLong(name, value).apply()
+
+fun SharedPreferences.apply(name: String, value: Set<String?>?) = edit().putStringSet(name, value).apply()
+
+/**
  * Put [map] into [SharedPreferences.Editor]
  * @return [SharedPreferences.Editor]
  **/
