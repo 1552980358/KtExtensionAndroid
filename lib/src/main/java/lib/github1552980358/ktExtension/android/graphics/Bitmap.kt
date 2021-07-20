@@ -31,8 +31,11 @@ fun Bitmap.writeJPEGToFile(file: File, quality: Int = 100) {
     }
 }
 
+@Suppress("DeprecatedCallableAddReplaceWith")
+@Deprecated(message = "Deprecated in AOSP SDK")
 fun Bitmap.writeWEBPToFile(file: File, quality: Int = 100) {
     file.outputStream().osApply {
+        @Suppress("DEPRECATION")
         compress(Bitmap.CompressFormat.WEBP, quality, this)
     }
 }
