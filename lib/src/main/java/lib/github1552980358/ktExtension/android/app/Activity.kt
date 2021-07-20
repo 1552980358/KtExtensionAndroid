@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import lib.github1552980358.ktExtension.android.content.startActivity
 
 /**
  * Check whether permissions are granted.
@@ -43,4 +44,12 @@ fun Activity.checkAndQuestPermission(list: Array<String>, requestCode: Int = 100
         return
     }
     ActivityCompat.requestPermissions(this, arrayList.toTypedArray(), requestCode)
+}
+
+/**
+ * Simply start a new [Activity.javaClass] instance and [Activity.finish] the old [Activity] instance
+ **/
+fun Activity.restartActivity() {
+    startActivity(javaClass)
+    finish()
 }
