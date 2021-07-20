@@ -2,8 +2,10 @@
 
 package lib.github1552980358.ktExtension.android.content
 
+import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
 import android.content.IntentFilter
 import android.widget.Toast
 import lib.github1552980358.ktExtension.android.content.res.getStatusBarHeight
@@ -47,3 +49,32 @@ fun Context.registerBroadcastReceiver(broadcastReceiver: BroadcastReceiver, acti
             }
         }
     )
+
+/**
+ * Call [Context.startActivity] with class [activity] and [intent].
+ *
+ * With 'intent: Intent.(Intent) -> Unit' method, two cases are provided
+ * to have the [Intent] instance:
+ *
+ * Case 1: Directly use [this]
+ *  Example:
+ *      startActivity(activity) {
+ *          // Call "this", we can get [Intent] instance
+ *          putExtra(.., ..) // Or this.putExtra(.., ..)
+ *      }
+ *
+ * Case 2: Custom [Intent] instance name
+ *      startActivity(activity) { intent: Intent -> // Customizing [Intent] instance variable name in { ... }
+ *                                                  // Type defining (:Intent) can be omitted
+ *          // Call customized "intent" variable
+ *          intent.putExtra(.., ..)
+ *      }
+ *
+ **/
+fun Context.startActivity(activity: Class<Activity>, intent: Intent.(Intent) -> Unit) =
+    startActivity(Intent(this, activity).apply { intent(this) })
+
+/**
+ * Directly start an activity by calling [Context.startActivity] with class [activity]
+ **/
+fun Context.startActivity(activity: Class<Activity>) = startActivity(Intent(this, activity))
