@@ -1,5 +1,6 @@
 package lib.github1552980358.ktExtension.androidx.fragment.app
 
+import android.app.Activity
 import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.annotation.ColorRes
@@ -8,6 +9,7 @@ import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import lib.github1552980358.ktExtension.android.app.restartActivity
 
 /**
  * Get Color with [resId]
@@ -29,3 +31,8 @@ fun <V: View> Fragment.findActivityViewById(@IdRes resId: Int): V? = requireActi
  **/
 @Suppress("UNCHECKED_CAST")
 fun <F: FragmentActivity> Fragment.requireTypedActivity() = requireActivity() as F
+
+/**
+ * Start a new [Fragment.requireActivity] instance and [Activity.finish] the old [Activity] instance
+ **/
+fun Fragment.restartActivity() = requireActivity().restartActivity()
