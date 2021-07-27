@@ -6,6 +6,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.DisplayMetrics
 import android.view.View
+import android.view.ViewParent
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
@@ -57,3 +58,11 @@ val View.widthF get() = width.toFloat()
  * Get [View]'s [View.getHeight] and convert into [Float]
  **/
 val View.heightF get() = height.toFloat()
+
+/**
+ * Call [ViewParent.rootParentOrChild] if [View.getParent] does not return null
+ *
+ * @return [ViewParent.rootParentOrChild] if [View.getParent] is not null
+ * @return null when [View.getParent] returns null
+ **/
+val View.rootParent get(): ViewParent? = if (parent == null) null else parent.rootParentOrChild
