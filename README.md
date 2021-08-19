@@ -21,6 +21,13 @@ Should implement dependencies into your module `build.gradle` when the specific 
 1. Android
     - android.app
         - `Activity`
+    - android.content
+        - res
+            - `Resources`
+        - `BroadcastReceiver`
+        - `Content`
+        - `Intent`
+        - `SharedPreferences`
     - android.graphics
         - `Bitmap`
             - Dependency `androidx.core:core-ktx:1.3.0`
@@ -28,19 +35,26 @@ Should implement dependencies into your module `build.gradle` when the specific 
             - Dependency `androidx.core:core-ktx:1.3.0`
     - android.util
         - `Log`
-    - androidx.palette
-        - `Palette`
-            - Dependency `androidx.palette:palette-ktx:1.0.0`
-2. Kotlin
-    - `Array`
+    - android.view
+        - `View`
+        - `ViewParent`
+    - android.widget
+        - `Toast`
+2. AndroidX
+   - androidx.fragment
+     - `Fragment`
+     - `SimpleFragmentPagerAdapter`
+   - androidx.palette
+       - `Palette`
+           - Dependency `androidx.palette:palette-ktx:1.0.0`
+   - android.viewpager.widget
+     - `ViewPager`
+3. Kotlin
     - `ByteArray`
-    - `List`
-3. Java
-    - `ArrayList`
+4. Java
     - `File`
     - `InputStream`
-    - `Runtime`
-4. More Extension is on the way...
+5. More Extension is on the way...
 
 ### Open Source License - [Apache License 2.0](https://github.com/1552980358/KtExtensionAndroid/blob/master/LICENSE)
 ```
