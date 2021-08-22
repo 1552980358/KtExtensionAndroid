@@ -5,8 +5,8 @@ package lib.github1552980358.ktExtension.android.graphics
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import androidx.core.graphics.drawable.toBitmap
-import lib.github1552980358.ktExtension.android.extension.ColorPalette
-import lib.github1552980358.ktExtension.android.extension.getCalculate
+import lib.github1552980358.ktExtension.androidx.palette.ColorPalette
+import lib.github1552980358.ktExtension.androidx.palette.getCalculate
 import lib.github1552980358.ktExtension.jvm.keyword.tryCatch
 
 /**
