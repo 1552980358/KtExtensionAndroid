@@ -42,15 +42,16 @@ fun Context.longToast(message: Int) =
 /**
  * Register [BroadcastReceiver] without creating [IntentFilter] by hand
  **/
+fun Context.registerBroadcastReceiver(broadcastReceiver: BroadcastReceiver, intentFilter: IntentFilter.() -> Unit) =
+    registerReceiver(broadcastReceiver, IntentFilter().apply(intentFilter))
+
+fun Context.registerBroadcastReceiver(broadcastReceiver: BroadcastReceiver, action: String) =
+    registerReceiver(broadcastReceiver, IntentFilter(action))
+
 fun Context.registerBroadcastReceiver(broadcastReceiver: BroadcastReceiver, actions: Array<out String>) =
-    registerReceiver(
-        broadcastReceiver,
-        IntentFilter().apply {
-            actions.forEach { action ->
-                addAction(action)
-            }
-        }
-    )
+    registerBroadcastReceiver(broadcastReceiver) {
+        actions.forEach { action -> addAction(action) }
+    }
 
 /**
  * Call [Context.startActivity] with class [activity] and [intent].
