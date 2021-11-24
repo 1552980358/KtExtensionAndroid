@@ -5,6 +5,7 @@ package lib.github1552980358.ktExtension.android.content
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 
 /***********************************************************
  * fun example(context: Context) {                         *
@@ -32,5 +33,11 @@ fun broadcastReceiver(block: (context: Context?, intent: Intent?, receiver: Broa
 /**
  * Register [BroadcastReceiver]
  **/
-fun BroadcastReceiver.register(context: Context, actions: Array<out String>) =
+fun BroadcastReceiver.register(context: Context, vararg actions: String) =
     context.registerBroadcastReceiver(this, actions)
+
+fun BroadcastReceiver.register(context: Context, intentFilter: IntentFilter.() -> Unit) =
+    context.registerBroadcastReceiver(this, intentFilter)
+
+fun BroadcastReceiver.register(context: Context, action: String) =
+    context.registerBroadcastReceiver(this, action)
