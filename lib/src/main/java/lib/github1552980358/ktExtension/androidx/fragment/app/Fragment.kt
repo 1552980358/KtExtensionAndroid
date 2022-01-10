@@ -1,12 +1,14 @@
 package lib.github1552980358.ktExtension.androidx.fragment.app
 
 import android.app.Activity
+import android.content.res.Resources.Theme
 import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import lib.github1552980358.ktExtension.android.app.restartActivity
@@ -19,7 +21,12 @@ fun Fragment.getColor(@ColorRes resId: Int) = ContextCompat.getColor(requireCont
 /**
  * Get [Drawable] with [resId]
  **/
-fun Fragment.getDrawable(@DrawableRes resId: Int) = requireContext().getDrawable(resId)
+fun Fragment.getDrawable(resId: Int, theme: Theme?) = ResourcesCompat.getDrawable(requireContext().resources, resId, theme)
+
+/**
+ * Get [Drawable] with [resId]
+ **/
+fun Fragment.getDrawable(@DrawableRes resId: Int) = getDrawable(resId, null)
 
 /**
  * Find a [V] typed [View] with [resId] from parent [FragmentActivity]
