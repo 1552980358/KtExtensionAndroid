@@ -20,3 +20,22 @@ fun CoroutineScope.io(block: suspend CoroutineScope.() -> Unit) =
 
 fun CoroutineScope.ui(block: suspend CoroutineScope.() -> Unit) =
     launch(Main, block = block)
+
+/**
+ * Run try { ... } at [ioDispatcher], catch { ... } (if specified with [CoroutineScope]) or/and
+ * finally { ... } (if specified with [CoroutineScope])
+ **/
+fun ioTry(tryBlock: suspend CoroutineScope.() -> Unit) = CoroutineTry(ioDispatcher, tryBlock)
+
+/**
+ * Run try { ... } at [mainDispatcher], catch { ... } (if specified with [CoroutineScope]) or/and
+ * finally { ... } (if specified with [CoroutineScope])
+ **/
+fun mainTry(tryBlock: suspend CoroutineScope.() -> Unit) = CoroutineTry(mainDispatcher, tryBlock)
+
+/**
+ * Run try { ... } at current [CoroutineScope], catch { ... } (if specified with [CoroutineScope]) or/and
+ * finally { ... } (if specified with [CoroutineScope])
+ **/
+fun CoroutineScope.launchTry(tryBlock: suspend CoroutineScope.() -> Unit) =
+    CoroutineTry(this, tryBlock)
