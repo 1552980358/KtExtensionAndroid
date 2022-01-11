@@ -5,15 +5,15 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
-val ioDispatcher get() = CoroutineScope(IO)
+val ioScope get() = CoroutineScope(IO)
 
-val mainDispatcher get() = CoroutineScope(Main)
+val mainScope get() = CoroutineScope(Main)
 
 fun io(block: suspend CoroutineScope.() -> Unit) =
-    ioDispatcher.launch(block = block)
+    ioScope.launch(block = block)
 
 fun ui(block: suspend CoroutineScope.() -> Unit) =
-    mainDispatcher.launch(block = block)
+    mainScope.launch(block = block)
 
 fun CoroutineScope.io(block: suspend CoroutineScope.() -> Unit) =
     launch(IO, block = block)
@@ -22,16 +22,16 @@ fun CoroutineScope.ui(block: suspend CoroutineScope.() -> Unit) =
     launch(Main, block = block)
 
 /**
- * Run try { ... } at [ioDispatcher], catch { ... } (if specified with [CoroutineScope]) or/and
+ * Run try { ... } at [ioScope], catch { ... } (if specified with [CoroutineScope]) or/and
  * finally { ... } (if specified with [CoroutineScope])
  **/
-fun ioTry(tryBlock: suspend CoroutineScope.() -> Unit) = CoroutineTry(ioDispatcher, tryBlock)
+fun ioTry(tryBlock: suspend CoroutineScope.() -> Unit) = CoroutineTry(ioScope, tryBlock)
 
 /**
- * Run try { ... } at [mainDispatcher], catch { ... } (if specified with [CoroutineScope]) or/and
+ * Run try { ... } at [mainScope], catch { ... } (if specified with [CoroutineScope]) or/and
  * finally { ... } (if specified with [CoroutineScope])
  **/
-fun mainTry(tryBlock: suspend CoroutineScope.() -> Unit) = CoroutineTry(mainDispatcher, tryBlock)
+fun mainTry(tryBlock: suspend CoroutineScope.() -> Unit) = CoroutineTry(mainScope, tryBlock)
 
 /**
  * Run try { ... } at current [CoroutineScope], catch { ... } (if specified with [CoroutineScope]) or/and

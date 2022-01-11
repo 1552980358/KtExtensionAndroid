@@ -17,16 +17,16 @@ class CoroutineTry(coroutineScope: CoroutineScope, block: suspend CoroutineScope
     private var finallyBlock: CoroutineFinally? = null
     
     /**
-     * Set [catchBlock] to [ioDispatcher]
+     * Set [catchBlock] to [ioScope]
      **/
     fun ioCatch(catchBlock: suspend CoroutineScope.(Exception) -> Unit) =
-        setCatch(ioDispatcher, catchBlock)
+        setCatch(ioScope, catchBlock)
     
     /**
-     * Set [catchBlock] to [mainDispatcher]
+     * Set [catchBlock] to [mainScope]
      **/
     fun mainCatch(catchBlock: suspend CoroutineScope.(Exception) -> Unit) =
-        setCatch(mainDispatcher, catchBlock)
+        setCatch(mainScope, catchBlock)
     
     /**
      * Set [catchBlock] to [coroutineScope]
@@ -42,16 +42,16 @@ class CoroutineTry(coroutineScope: CoroutineScope, block: suspend CoroutineScope
     }
     
     /**
-     * Set [finallyBlock] to [ioDispatcher]
+     * Set [finallyBlock] to [ioScope]
      **/
     fun ioFinally(finallyBlock: suspend CoroutineScope.() -> Unit) =
-        setFinally(ioDispatcher, finallyBlock)
+        setFinally(ioScope, finallyBlock)
     
     /**
-     * Set [finallyBlock] to [mainDispatcher]
+     * Set [finallyBlock] to [mainScope]
      **/
     fun mainFinally(finallyBlock: suspend CoroutineScope.() -> Unit) =
-        setFinally(mainDispatcher, finallyBlock)
+        setFinally(mainScope, finallyBlock)
     
     /**
      * Set [finallyBlock] to [coroutineScope]
