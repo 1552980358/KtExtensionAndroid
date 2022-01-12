@@ -3,15 +3,7 @@ package lib.github1552980358.ktExtension.kotlinx.coroutines
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-abstract class CoroutineBlock(protected val coroutineScope: CoroutineScope, protected val block: suspend CoroutineScope.() -> Unit) {
-    /**
-     * Method to be called for running
-     **/
-    abstract suspend fun runBlock()
-}
-
-class CoroutineTry(coroutineScope: CoroutineScope, block: suspend CoroutineScope.() -> Unit)
-    : CoroutineBlock(coroutineScope, block) {
+class CoroutineTry(private val coroutineScope: CoroutineScope, private val block: suspend CoroutineScope.() -> Unit) {
     
     private var catchBlock: CoroutineCatch? = null
     private var finallyBlock: CoroutineFinally? = null
@@ -67,20 +59,15 @@ class CoroutineTry(coroutineScope: CoroutineScope, block: suspend CoroutineScope
     }
     
     /**
-     * Run [runBlock] at [coroutineScope]
+     * Run [block] at [coroutineScope] with try { ... }
      */
-    fun launch() = coroutineScope.launch { runBlock() }
-    
-    /**
-     * Run block, with specified content
-     */
-    override suspend fun runBlock() {
+    fun launch() = coroutineScope.launch {
         try {
             block(coroutineScope)
         } catch (e: Exception) {
-            catchBlock?.onCatch(e)
+            catchBlock?.onCatch(e)?.join()
         } finally {
-            finallyBlock?.runBlock()
+            finallyBlock?.onFinally()?.join()
         }
     }
     
