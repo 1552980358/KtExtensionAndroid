@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package lib.github1552980358.ktExtension.android.kotlin
+package lib.github1552980358.ktExtension.kotlin
 
 import android.content.Context
 import android.content.res.Resources
