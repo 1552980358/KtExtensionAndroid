@@ -93,12 +93,10 @@ class CoroutineCatch(private val coroutineScope: CoroutineScope, private val blo
     suspend fun onCatch(exception: Exception) = coroutineScope.launch { block(exception) }
 }
 
-class CoroutineFinally(coroutineScope: CoroutineScope, block: suspend CoroutineScope.() -> Unit)
-    : CoroutineBlock(coroutineScope, block) {
+class CoroutineFinally(private val coroutineScope: CoroutineScope, private val block: suspend CoroutineScope.() -> Unit) {
     /**
      * Called at finally { ... }
      **/
-    override suspend fun runBlock() {
-        coroutineScope.launch { block() }
-    }
+    fun onFinally() = coroutineScope.launch { block() }
+    
 }
