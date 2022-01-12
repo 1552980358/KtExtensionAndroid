@@ -20,6 +20,8 @@ fun ByteArray.toBitmap(offset: Int = 0, length: Int = -1): Bitmap? = when {
     else -> BitmapFactory.decodeByteArray(this, offset, if (length == -1) this.size else length)
 }
 
+val ByteArray.asBitmap get() = toBitmap()
+
 /**
  * Convert [ByteArray] into [Bitmap] using [BitmapFactory], [toBitmap] and [toDrawable]
  *
