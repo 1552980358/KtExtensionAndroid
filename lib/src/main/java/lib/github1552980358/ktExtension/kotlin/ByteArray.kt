@@ -12,18 +12,12 @@ import androidx.core.graphics.drawable.toDrawable
 /**
  * Convert [ByteArray] into [Bitmap] using [BitmapFactory]
  **/
-fun ByteArray.toBitmap(offset: Int = 0, length: Int = -1): Bitmap? {
-    if (isEmpty()) {
-        return null
-    }
-    if (offset < 0 || size < length) {
-        return null
-    }
-    return BitmapFactory.decodeByteArray(
-        this,
-        offset,
-        if (length == -1) this.size else length
-    )
+fun ByteArray.toBitmap(offset: Int = 0, length: Int = -1): Bitmap? = when {
+    isEmpty() -> null
+    offset < 0 -> null
+    size <= 0 -> null
+    length != -1 && length > size -> null
+    else -> BitmapFactory.decodeByteArray(this, offset, if (length == -1) this.size else length)
 }
 
 /**
