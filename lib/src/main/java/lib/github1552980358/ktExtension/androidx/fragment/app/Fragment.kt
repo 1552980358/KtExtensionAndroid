@@ -1,10 +1,12 @@
 package lib.github1552980358.ktExtension.androidx.fragment.app
 
 import android.app.Activity
+import android.content.res.Resources
 import android.content.res.Resources.Theme
 import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
@@ -27,6 +29,21 @@ fun Fragment.getDrawable(resId: Int, theme: Theme?) = ResourcesCompat.getDrawabl
  * Get [Drawable] with [resId]
  **/
 fun Fragment.getDrawable(@DrawableRes resId: Int) = getDrawable(resId, null)
+
+/**
+ * [Resources.getDimension]
+ */
+fun Fragment.dimensionOf(@DimenRes resId: Int) = resources.getDimension(resId)
+
+/**
+ * [Resources.getDimensionPixelSize]
+ */
+fun Fragment.pixelSizeOf(@DimenRes resId: Int) = resources.getDimensionPixelSize(resId)
+
+/**
+ * [Resources.getDimensionPixelOffset]
+ */
+fun Fragment.pixelOffsetOf(@DimenRes resId: Int) = resources.getDimensionPixelOffset(resId)
 
 /**
  * Find a [V] typed [View] with [resId] from parent [FragmentActivity]
