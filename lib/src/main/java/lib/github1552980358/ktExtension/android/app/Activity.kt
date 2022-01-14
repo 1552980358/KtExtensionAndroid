@@ -4,6 +4,8 @@ package lib.github1552980358.ktExtension.android.app
 
 import android.app.Activity
 import android.content.pm.PackageManager
+import android.content.res.Resources
+import androidx.annotation.DimenRes
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import lib.github1552980358.ktExtension.android.content.startActivity
@@ -53,3 +55,18 @@ fun Activity.restartActivity() {
     startActivity(javaClass)
     finish()
 }
+
+/**
+ * [Resources.getDimension]
+ */
+fun Activity.dimensionOf(@DimenRes resId: Int) = resources.getDimension(resId)
+
+/**
+ * [Resources.getDimensionPixelSize]
+ */
+fun Activity.pixelSizeOf(@DimenRes resId: Int) = resources.getDimensionPixelSize(resId)
+
+/**
+ * [Resources.getDimensionPixelOffset]
+ */
+fun Activity.pixelOffsetOf(@DimenRes resId: Int) = resources.getDimensionPixelOffset(resId)
