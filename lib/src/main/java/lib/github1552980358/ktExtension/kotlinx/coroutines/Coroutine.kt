@@ -31,7 +31,7 @@ fun ioTry(tryBlock: suspend CoroutineScope.() -> Unit) = CoroutineTry(ioScope, t
  * Run try { ... } at [mainScope], catch { ... } (if specified with [CoroutineScope]) or/and
  * finally { ... } (if specified with [CoroutineScope])
  **/
-fun mainTry(tryBlock: suspend CoroutineScope.() -> Unit) = CoroutineTry(mainScope, tryBlock)
+fun uiTry(tryBlock: suspend CoroutineScope.() -> Unit) = CoroutineTry(mainScope, tryBlock)
 
 /**
  * Run try { ... } at current [CoroutineScope], catch { ... } (if specified with [CoroutineScope]) or/and
