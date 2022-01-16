@@ -17,7 +17,7 @@ class CoroutineTry(private val coroutineScope: CoroutineScope, private val block
     /**
      * Set [catchBlock] to [mainScope]
      **/
-    fun mainCatch(catchBlock: suspend CoroutineScope.(Exception) -> Unit) =
+    fun uiCatch(catchBlock: suspend CoroutineScope.(Exception) -> Unit) =
         setCatch(mainScope, catchBlock)
     
     /**
@@ -42,7 +42,7 @@ class CoroutineTry(private val coroutineScope: CoroutineScope, private val block
     /**
      * Set [finallyBlock] to [mainScope]
      **/
-    fun mainFinally(finallyBlock: suspend CoroutineScope.() -> Unit) =
+    fun uiFinally(finallyBlock: suspend CoroutineScope.() -> Unit) =
         setFinally(mainScope, finallyBlock)
     
     /**
