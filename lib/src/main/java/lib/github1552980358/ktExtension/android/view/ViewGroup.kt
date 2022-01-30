@@ -15,4 +15,4 @@ fun ViewGroup.inflate(@LayoutRes resId: Int, attachToRoot: Boolean = false) =
     LayoutInflater.from(context).inflate(resId, this, attachToRoot)
 
 inline fun <reified viewHolder: ViewHolder> ViewGroup.createViewHolder(@LayoutRes resId: Int, attachToRoot: Boolean = false): viewHolder =
-    tryRun { viewHolder::class.constructors.find { it.parameters.size == 1 }?.call(inflate(resId, attachToRoot)) } ?: throw NoSuchMethodException()
+    viewHolder::class.constructors.find { it.parameters.size == 1 && it.parameters.first() == View::class.java }?.call(inflate(resId, attachToRoot)) ?: throw NoSuchMethodException()
