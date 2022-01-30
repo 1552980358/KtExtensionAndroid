@@ -37,13 +37,14 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compileOnly 'androidx.core:core-ktx:1.7.0'
-    compileOnly 'com.github.1552980358:KtExtension:1.2.2'
+    compileOnly 'com.github.1552980358:KtExtension:1.2.4'
     compileOnly 'androidx.palette:palette-ktx:1.0.0'
-    compileOnly 'androidx.appcompat:appcompat:1.4.0'
-    compileOnly 'androidx.preference:preference-ktx:1.1.1'
-    compileOnly 'com.google.android.material:material:1.4.0'
+    compileOnly 'androidx.appcompat:appcompat:1.4.1'
+    compileOnly 'androidx.preference:preference-ktx:1.2.0'
+    compileOnly 'com.google.android.material:material:1.5.0'
     compileOnly 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
     compileOnly 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.6.10"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
