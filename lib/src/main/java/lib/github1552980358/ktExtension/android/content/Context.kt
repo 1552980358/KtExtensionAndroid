@@ -3,11 +3,14 @@
 package lib.github1552980358.ktExtension.android.content
 
 import android.app.Activity
+import android.app.Service
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.os.Build.VERSION.SDK_INT
+import android.os.Build.VERSION_CODES.O
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import lib.github1552980358.ktExtension.android.content.res.getStatusBarHeight
@@ -108,3 +111,15 @@ fun Context.checkPermissions(vararg permissions: String) = checkPermissionList(p
 
 fun Context.checkPermissionArray(permissions: Array<String>) = checkPermissionList(permissions.toList())
 
+inline fun <reified T: Activity> Context.startActivityOf(intent: Intent.() -> Unit = {}) =
+    startActivity(Intent(this, T::class.java).apply(intent))
+
+inline fun <reified T: Service> Context.startServiceOf(intent: Intent.() -> Unit = {}) = Intent(this, T::class.java).apply(intent).apply {
+    when {
+        SDK_INT < O -> startService(this)
+        else -> startForegroundService(this)
+    }
+}
+
+fun Context.sendBroadcast(action: String, block: Intent.() -> Unit = {}) =
+    sendBroadcast(intent(action) { block() })
