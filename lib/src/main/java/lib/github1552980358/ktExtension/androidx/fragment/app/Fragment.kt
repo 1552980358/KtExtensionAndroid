@@ -65,3 +65,6 @@ fun Fragment.restartActivity() = requireActivity().restartActivity()
 
 inline fun <reified dialog: DialogFragment> Fragment.showFragmentDialog() =
     (dialog::class.createInstance() as DialogFragment).show(parentFragmentManager, dialog::class.simpleName)
+
+inline fun <reified dialogFragment: DialogFragment> dialogFragment.show(fragment: Fragment) =
+    (this as DialogFragment).also { it.show(fragment.parentFragmentManager, dialogFragment::class.simpleName) }
