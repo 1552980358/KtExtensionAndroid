@@ -19,3 +19,6 @@ fun <fragment: Fragment> FragmentActivity.currentChildFragment() = currentChildF
 
 inline fun <reified dialog: DialogFragment> FragmentActivity.showFragmentDialog() =
     (dialog::class.createInstance() as DialogFragment).show(supportFragmentManager, dialog::class.simpleName)
+
+inline fun <reified dialogFragment: DialogFragment> dialogFragment.show(fragmentActivity: FragmentActivity) =
+    (this as DialogFragment).also { it.show(fragmentActivity.supportFragmentManager, dialogFragment::class.simpleName) }
