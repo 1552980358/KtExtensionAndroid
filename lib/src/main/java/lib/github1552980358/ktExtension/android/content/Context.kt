@@ -4,13 +4,13 @@ package lib.github1552980358.ktExtension.android.content
 
 import android.app.Activity
 import android.app.Service
+import android.app.UiModeManager
 import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Context.UI_MODE_SERVICE
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
-import android.content.res.Configuration.UI_MODE_NIGHT_MASK
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.O
 import android.widget.Toast
@@ -127,6 +127,6 @@ fun Context.sendBroadcast(action: String, block: Intent.() -> Unit = {}) =
     sendBroadcast(intent(action) { block() })
 
 /**
- * Check whether is dark mode enabled
+ * Check whether system is dark mode enabled
  **/
-val Context.isDarkMode get() = resources.configuration.uiMode and UI_MODE_NIGHT_MASK == UI_MODE_NIGHT_YES
+val Context.isSystemDarkMode get() = (getSystemService(UI_MODE_SERVICE) as UiModeManager).nightMode == UiModeManager.MODE_NIGHT_YES

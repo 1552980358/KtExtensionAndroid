@@ -1,7 +1,6 @@
 package lib.github1552980358.ktExtension.androidx.fragment.app
 
 import android.app.Activity
-import android.content.res.Configuration
 import android.content.res.Resources
 import android.content.res.Resources.Theme
 import android.graphics.drawable.Drawable
@@ -16,6 +15,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import lib.github1552980358.ktExtension.android.app.restartActivity
+import lib.github1552980358.ktExtension.android.content.isSystemDarkMode
 import kotlin.reflect.full.createInstance
 
 /**
@@ -71,6 +71,6 @@ inline fun <reified dialogFragment: DialogFragment> dialogFragment.show(fragment
     (this as DialogFragment).also { it.show(fragment.parentFragmentManager, dialogFragment::class.simpleName) }
 
 /**
- * Check whether is dark mode enabled
+ * Check whether system is dark mode enabled
  **/
-val Fragment.isDarkMode get() = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+val Fragment.isSystemDarkMode get() = requireContext().isSystemDarkMode
