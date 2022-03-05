@@ -9,6 +9,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.content.res.Configuration.UI_MODE_NIGHT_MASK
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.O
 import android.widget.Toast
@@ -123,3 +125,8 @@ inline fun <reified T: Service> Context.startServiceOf(intent: Intent.() -> Unit
 
 fun Context.sendBroadcast(action: String, block: Intent.() -> Unit = {}) =
     sendBroadcast(intent(action) { block() })
+
+/**
+ * Check whether is dark mode enabled
+ **/
+val Context.isDarkMode get() = resources.configuration.uiMode and UI_MODE_NIGHT_MASK == UI_MODE_NIGHT_YES
