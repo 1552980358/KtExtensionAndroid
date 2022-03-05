@@ -1,6 +1,7 @@
 package lib.github1552980358.ktExtension.androidx.fragment.app
 
 import android.app.Activity
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.content.res.Resources.Theme
 import android.graphics.drawable.Drawable
@@ -68,3 +69,8 @@ inline fun <reified dialog: DialogFragment> Fragment.showFragmentDialog() =
 
 inline fun <reified dialogFragment: DialogFragment> dialogFragment.show(fragment: Fragment) =
     (this as DialogFragment).also { it.show(fragment.parentFragmentManager, dialogFragment::class.simpleName) }
+
+/**
+ * Check whether is dark mode enabled
+ **/
+val Fragment.isDarkMode get() = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
