@@ -14,8 +14,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import lib.github1552980358.ktExtension.android.app.restartActivity
-import lib.github1552980358.ktExtension.android.content.isSystemDarkMode
+import lib.github1552980358.ktExtension.android.app.Activity.restartActivity
+import lib.github1552980358.ktExtension.android.content.Context.isSystemDarkMode
 import kotlin.reflect.full.createInstance
 
 /**
