@@ -78,17 +78,10 @@ fun Bitmap.cutSquare(): Bitmap? {
     }
     
     return when {
-        width > height -> {
-            Bitmap.createBitmap(this, (width - height) / 2, 0, width, width)
-        }
-        width < height -> {
-            Bitmap.createBitmap(this, 0, (height - width) / 2, width, width)
-        }
-        else -> {
-            this
-        }
+        width > height -> Bitmap.createBitmap(this, (width - height) / 2, 0, height, height)
+        width < height -> Bitmap.createBitmap(this, 0, (height - width) / 2, width, width)
+        else -> this
     }
-    
 }
 
 fun Bitmap.cutSquare(centerX: Int, centerY: Int, sideLength: Int): Bitmap? {
